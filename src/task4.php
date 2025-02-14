@@ -8,6 +8,8 @@ assertTrue(isset($_REQUEST['luvut']));
 
 $luvut = explode('|', $_REQUEST['luvut']);
 
+assertTrue(count($luvut) <= 100);
+
 echo array_reduce($luvut, static function ($carry, $item) {
     return $carry + $item;
 }, 0);
