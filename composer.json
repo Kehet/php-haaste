@@ -16,5 +16,8 @@
             "email": "382965-kehet@users.noreply.gitlab.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "^12.1@dev"
+    }
 }
