@@ -6,13 +6,6 @@ error_reporting(E_ALL);
 
 require 'vendor/autoload.php';
 
-function assertTrue(bool $condition, ?string $message = null)
-{
-    if (!$condition) {
-        throw new RuntimeException($message ?? 'Failed asserting that false is true.');
-    }
-}
-
 file_put_contents(
     'access.log',
     sprintf(
@@ -29,7 +22,22 @@ file_put_contents(
 $request = $_SERVER['SCRIPT_NAME'];
 
 if (file_exists(__DIR__ . '/src' . $request)) {
-    require __DIR__ . '/src' . $request;
+    $response = require __DIR__ . '/src' . $request;
+
+    if (is_string($response)) {
+        file_put_contents(
+            'access.log',
+            sprintf(
+                "%s %s\n",
+                date('Y-m-d H:i:s'),
+                json_encode($response, JSON_THROW_ON_ERROR)
+            ),
+            FILE_APPEND
+        );
+    }
+
+    echo $response;
+
     die(0);
 }
 
