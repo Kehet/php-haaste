@@ -1,0 +1,5 @@
+procs:
+  php:
+    shell: "php -S localhost:8000 router.php"
+  ngrok:
+    shell: "ngrok http http://localhost:8000"
