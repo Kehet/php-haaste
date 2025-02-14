@@ -6,11 +6,11 @@ git ci
 counter=1
 
 while true; do
-  file="src/task${counter}.php"
-
-  if [ ! -f "$file" ]; then
-    echo "<?php" > "$file"
-    git add $file
+  if [ ! -f "src/task${counter}.php" ]; then
+    cp stubs/task.php "src/task${counter}.php"
+    sed "s/XXXXX/${counter}/g" < stubs/test.php > "tests/Task${counter}Test.php"
+    git add "src/task${counter}.php"
+    git add "tests/Task${counter}Test.php"
     break
   fi
 
