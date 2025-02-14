@@ -25,13 +25,17 @@ if (file_exists(__DIR__ . '/src' . $request)) {
     $response = require __DIR__ . '/src' . $request;
 
     if (isset($response)) {
+        $array = $_REQUEST;
+
+        if (isset($array['id'])) {
+            unset($array['id']);
+        }
+
+        $array['result'] = $response;
+
         file_put_contents(
             'access.log',
-            sprintf(
-                "%s %s\n",
-                date('Y-m-d H:i:s'),
-                json_encode($response, JSON_THROW_ON_ERROR)
-            ),
+            json_encode($array, JSON_THROW_ON_ERROR) . "\n",
             FILE_APPEND
         );
     }
