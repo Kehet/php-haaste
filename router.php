@@ -24,7 +24,7 @@ $request = $_SERVER['SCRIPT_NAME'];
 if (file_exists(__DIR__ . '/src' . $request)) {
     $response = require __DIR__ . '/src' . $request;
 
-    if (is_string($response)) {
+    if (isset($response)) {
         file_put_contents(
             'access.log',
             sprintf(
