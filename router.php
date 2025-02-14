@@ -13,6 +13,19 @@ function assertTrue(bool $condition, ?string $message = null)
     }
 }
 
+file_put_contents(
+    'access.log',
+    sprintf(
+        "%s %s %s %s %s\n",
+        date('Y-m-d H:i:s'),
+        $_SERVER['REMOTE_ADDR'],
+        $_SERVER['REQUEST_METHOD'],
+        $_SERVER['REQUEST_URI'],
+        json_encode($_REQUEST, JSON_THROW_ON_ERROR)
+    ),
+    FILE_APPEND
+);
+
 $request = $_SERVER['SCRIPT_NAME'];
 
 if (file_exists(__DIR__ . '/src' . $request)) {
