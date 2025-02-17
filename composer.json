@@ -1,5 +1,6 @@
 {
     "name": "kehet/php-haaste",
+    "description": "Answers for Ohjelmointiputka's PHP-haaste",
     "type": "project",
     "require": {
         "symfony/var-dumper": "^7.2"
@@ -7,7 +8,7 @@
     "scripts": {
         "test": "./vendor/bin/phpunit tests/"
     },
-    "license": "GPLv3",
+    "license": "GPL-3.0-only",
     "autoload": {
         "psr-4": {
             "Kehet\\PhpHaaste\\": "src/"
