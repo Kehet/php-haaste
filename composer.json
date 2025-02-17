@@ -4,6 +4,9 @@
     "require": {
         "symfony/var-dumper": "7.3.x-dev"
     },
+    "scripts": {
+        "test": "./vendor/bin/phpunit tests/"
+    },
     "license": "GPLv3",
     "autoload": {
         "psr-4": {
